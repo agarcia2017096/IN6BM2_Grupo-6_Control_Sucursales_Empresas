@@ -25,6 +25,8 @@ export class EditarPerfilComponent implements OnInit {
     public _activatedRoute: ActivatedRoute,
     public _usuarioService: UsuarioService,
     private _empresasService: EmpresasService,
+    private _router: Router,
+
      private userRest: UsuarioService) {
 
   //this.productoModelGet = new Productos('','','',0,0,'');
@@ -56,9 +58,12 @@ export class EditarPerfilComponent implements OnInit {
     this._empresasService.ObtenerUsuariosId(idEmpresa, this._usuarioService.obtenerToken()).subscribe(
       (response) => {
         this.empresaModelId = response.empleadoEncontrado;
+
+        console.log(response.empleadoEncontrado);
+
         console.log(response);
+        
         console.log(this.empresaModelId);
-        this.identidad = this._usuarioService.obtenerIdentidad();
 
       },
       (error)=>{
@@ -71,6 +76,13 @@ export class EditarPerfilComponent implements OnInit {
     this._empresasService.EditarUsuarios(this.empresaModelId, this._usuarioService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        console.log("response"+response.empresa)
+
+        localStorage.setItem("identidad", JSON.stringify(response.empresa))
+
+        
+        console.log("Conversion -"+ this._usuarioService.obtenerIdentidad())
+
         Swal.fire({
           icon: 'success',
           text: 'Datos editados con éxito',
@@ -90,6 +102,49 @@ export class EditarPerfilComponent implements OnInit {
       }
     )
   }
+
+
+  deleteEmpresa() {
+    Swal.fire({
+     title: '¿Está seguro que desea eliminar la empresa?',
+     text: "Este usuario será eliminado permanentemente",
+     icon: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#3085d6',
+     cancelButtonColor: '#d33',
+     confirmButtonText: '¡Si, estoy seguro!'
+   }).then((result) => {
+     if (result.isConfirmed) {
+       this._empresasService.EliminarUsuarios(this.idEmpresa, this.token).subscribe(
+         (response)=>{
+
+           Swal.fire(
+             '¡Eliminado!',
+             'El usuario fue eliminado con éxito',
+             'success'
+           )
+           localStorage.clear()
+           this._router.navigate(['/inicio']);
+         },
+         (error)=>{
+           Swal.fire({
+             icon: 'error',
+             title: 'Oops...',
+             text: error.error.message,
+           })
+   
+         }
+       )
+       
+     }
+   })
+   
+ }
+
+ logOut(){
+  localStorage.clear()
+}
+
 
   // getEmpresaId(idEmpresa){
   //   this._empresasService.ObtenerUsuariosId(idEmpresa, this._usuarioService.obtenerToken()).subscribe(

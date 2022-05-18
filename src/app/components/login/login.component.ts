@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
         (response)=>{
          console.log(response);
+
           localStorage.setItem("token", response.token)
+          
           resolve(response);
         },
         (error)=>{

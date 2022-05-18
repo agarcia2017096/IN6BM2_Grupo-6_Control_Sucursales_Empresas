@@ -30,7 +30,7 @@ export class RegistroComponent implements OnInit {
     if(this.repeatPass != this.empresasModelPost.password){
       Swal.fire({
         icon: 'error',
-        title: 'Las contraseñas no coinciden',
+        title: 'Las contraseñas, no coinciden',
         footer: 'Verifique los datos'
       })
     }else{

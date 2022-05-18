@@ -64,13 +64,13 @@
                     <i  class="fas fa-user-circle fa-7x text-black tamaño-icono" ><i class="bi bi-person-bounding-box"></i></i>
                     <br>
                     <span class="h1 fw-bold mb-0"><p></p>   PERFIL DE LA EMPRESA </span>
-                    <h3 *ngIf="_usuarioService.obtenerIdentidad()" class="mb-5 text-uppercase text-center"> {{ _usuarioService.obtenerIdentidad().nombre }}</h3>
+                    <h3 *ngIf="_usuarioService.obtenerIdentidad()" class="mb-5 text-uppercase text-center">  {{ _usuarioService.obtenerIdentidad().nombre }} </h3>
 
                   </div>
 
                   <hr><br>
 
-                  <form #registerForm="ngForm">
+                  <form #editForm="ngForm">
                     <div class="row">
                       <div class="col-md-6 mb-4">
                         <div class="form-outline">
@@ -111,6 +111,10 @@
                       <option value="Musical">Musical</option>
                       <option value="Floristería">Floristería</option>
                       <option value="Cine">Cine</option>
+                      <option value="Distribuidora">Distribuidora</option>
+                      <option value="Banco">Banco</option>
+                      <option value="Supermercado">Supermercado</option>
+
                     </select>                    
                     </div>
                     <br>
@@ -118,13 +122,29 @@
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example8">Descripción extra:</label>
-                      <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="2"></textarea>
                     </div>
+
                     <br>
-                    <div class="text-center mb-3">
-                      <button [disabled]="!registerForm.form.valid" id="boton" class="btn btn-dark btn-lg btn-block" type="button"  
-                      routerLinkActive="active"  (click)="putEmpresa()">Guardar Datos</button>
+                    <div class="text-center mb-3 row justify-content-center">
+                      
+                      <div class="col-4">
+                        <button [disabled]="!editForm.form.valid" id="boton" class="btn btn-dark btn-lg btn-block" type="button"  
+                        routerLinkActive="active"  (click)="putEmpresa()">Guardar datos</button>
+  
+                      </div>
+
+                      <div class="col-1">
+                      </div>
+
+                      <div class="col-4">
+                        <button [disabled]="!editForm.form.valid" id="botomOptionsEdit" class="btn btn-dark btn-lg btn-block" type="button"  
+                        routerLinkActive="active"  (click)="deleteEmpresa()"> Eliminar </button>
+  
+                      </div>
+
                     </div>
+
     
                   </form>
 

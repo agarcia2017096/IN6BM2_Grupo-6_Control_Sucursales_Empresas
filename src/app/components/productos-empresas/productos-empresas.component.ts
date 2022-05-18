@@ -22,6 +22,9 @@ export class ProductosEmpresasComponent implements OnInit {
   public productoModelPost: Producto;
   public productoModelGetId: Producto;
   public sucursalesModelGet: Sucursales ;
+  public searchProveerdor;
+  public searchProducto;
+
 
   public productoSucursalesModel: ProductoSucursal;
 
@@ -113,6 +116,9 @@ export class ProductosEmpresasComponent implements OnInit {
         
         this.productoModelGetId = response.producto;
         console.log(this.productoModelGetId);
+        this.getProductoId(this.idEmpresa)
+
+
       },
       (error)=>{
         console.log(<any>error);
@@ -190,7 +196,7 @@ export class ProductosEmpresasComponent implements OnInit {
   deleteProductos(idEmpresa) {
      Swal.fire({
       title: '¿Está seguro que desea eliminar el producto?',
-      text: "Este producto sera eliminado permanentemente",
+      text: "Este producto será eliminado permanentemente",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

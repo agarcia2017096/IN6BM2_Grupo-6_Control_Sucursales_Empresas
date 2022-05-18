@@ -22,21 +22,26 @@ import { Chart } from "chart.js";
     EmpresasService,
   ],
 })
+
 export class InformacionSucursalesComponent implements OnInit {
   public sucursalesModelGet: any = [];
 
   // GRAFICA CANTIDAD STOCK POR PRODUCTO
   chartOptions1 = {
-    responsive: true,
-  };
+    responsive: true
+    
+   };
+
   chartLabels1: any = [];
   chartLegend1 = true;
   chartPlugins1 = [];
 
-  chartData1: any = [{
+  chartData1: any = [
+    {
      data: [], 
      label: 'Stock' 
-    }];
+    }
+  ];
     
 
 
@@ -93,7 +98,10 @@ export class InformacionSucursalesComponent implements OnInit {
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
-      this.idEmpresa = dataRuta.get("idSucursal");
+
+
+      this.idEmpresa = this._usuarioService.obtenerIdentidad();
+      console.log('ID DE LA EMPRESA'+ this.idEmpresa._id)
 
       this.getProductoId(dataRuta.get("idSucursal"));
 
@@ -132,11 +140,11 @@ export class InformacionSucursalesComponent implements OnInit {
   }
 
   getSucursalesGrafica(idSucursal) {
-    this.sucursalesModelGet;
     this._productoSucursalService
       .ObtenerProductosSucursal(idSucursal, this.token)
       .subscribe(
         (response) => {
+
           this.sucursalesModelGet.forEach((dato) => {
             this.chartLabels.push(dato.NombreProductoSucursal);
             this.chartLabels1.push(dato.NombreProductoSucursal);

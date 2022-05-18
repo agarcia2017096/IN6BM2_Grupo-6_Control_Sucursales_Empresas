@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultRouterComponent } from './components/default-router/default-router.component';
 import { DefaultAdminComponent } from './components/default-admin/default-admin.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { SearchProveerdorPipe } from './pipes/search-proveerdor.pipe';
+import { SearchProductoPipe } from './pipes/search-producto.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     ProductosEmpresasComponent,
     DefaultRouterComponent,
     DefaultAdminComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    SearchProveerdorPipe,
+    SearchProductoPipe,
   ],
   imports: [
     BrowserModule,

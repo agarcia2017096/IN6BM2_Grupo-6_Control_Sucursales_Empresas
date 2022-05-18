@@ -245,8 +245,8 @@
           
           <div class="col-md-4">
             <div class="input-group" style="background-color: #222830;border-radius: 0.5rem;">
-              <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-              <button style="color: white;border-top-right-radius: 0.5rem;border-bottom-right-radius: 0.5rem" type="button" class="btn btn-outline-secondary"><i class="bi bi-search"></i> Buscar</button>
+              <input [(ngModel)]="searchProveerdor" [(ngModel)]="searchProducto" type="text" placeholder="Busqueda de detalles de producto" class="form-control" aria-label="Text input with segmented dropdown button">
+              <button  style="color: white;border-top-right-radius: 0.5rem;border-bottom-right-radius: 0.5rem" type="" class="btn btn-outline-secondary"><i class="bi bi-search"></i> Buscar</button>
 
             </div>                  
           </div>
@@ -277,7 +277,7 @@
               </thead>
               <tbody>
                 <!-- Implementacion de ngFor -->
-                <tr *ngFor="let prod of productoModelGet">
+                <tr *ngFor="let prod of productoModelGet | searchProveerdor:searchProveerdor  | searchProducto:searchProducto">
                   <td>{{prod.NombreProducto}}</td>
                   <td>{{prod.descripcion}}</td>
                   <td>{{prod.NombreProveedor}}</td>

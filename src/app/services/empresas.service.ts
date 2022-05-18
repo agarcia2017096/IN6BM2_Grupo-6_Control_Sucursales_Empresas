@@ -23,10 +23,13 @@ export class EmpresasService {
     let parametros = JSON.stringify(modeloEmpresa)
     return this._http.post(this.url + '/agregarEmpresa', parametros, {headers:headersToken})
   }
+
+  
   EliminarUsuarios(id : String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.delete(this.url + '/eliminarEmpresa/' + id, { headers: headersToken })
   }
+  
   ObtenerUsuariosId(id:String, token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/empresasId/' + id, {headers: headersToken})
