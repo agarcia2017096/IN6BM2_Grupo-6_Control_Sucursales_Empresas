@@ -53,22 +53,22 @@ export class DashBoardComponent implements OnInit {
   public id;
 
   ngOnInit(): void {
-    console.log(this.identidad)
+    //console.log(this.identidad)
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
 
-      console.log(dataRuta.get('idEmpresa'));
+      //console.log(dataRuta.get('idEmpresa'));
       this.idEmpresa = dataRuta.get('idEmpresa')
 
       this.id = dataRuta.get('id')
       this.getSucursalId('id')
 
-      console.log("RAMPOM "+this.random)
+      //console.log("RAMPOM "+this.random)
 
       this.getSucursales ()
-      console.log("IMAGENES"+this.imagenesDinamicas)
+      //console.log("IMAGENES"+this.imagenesDinamicas)
 
       this.imagenesDinamicas.forEach(element => {
-        console.log("IMAGENES "+element)
+        //console.log("IMAGENES "+element)
 
       });
 
@@ -81,7 +81,7 @@ export class DashBoardComponent implements OnInit {
       next: (response: any)=> {  // 200
         
         this.sucursalModelIdEdit = response.Sucursal
-        console.log(this.sucursalModelIdEdit)
+        //console.log(this.sucursalModelIdEdit)
       },
       error: (err) => { //400 404 500 401 403
         Swal.fire({
@@ -96,15 +96,15 @@ export class DashBoardComponent implements OnInit {
   }
 
   getSucursales (){
-    console.log('el id de la empresa es:' + this.idEmpresa)
+    //console.log('el id de la empresa es:' + this.idEmpresa)
       this._sucursalesService.ObtenerSucursales (this.idEmpresa, this.token).subscribe(
         (response) => {
           this.sucursalesModelGet = response.Sucursales;
-          console.log(response + 'hola');
+          //console.log(response + 'hola');
  
         },
         (error)=>{
-          console.log(<any>error)
+          //console.log(<any>error)
         }
      )
     
@@ -113,7 +113,7 @@ export class DashBoardComponent implements OnInit {
     postSucursal(agregarSucursal){
       this._sucursalesService.AgregarSucursales(this.sucursalesModelPost, this.token= this._usuarioService.obtenerToken()).subscribe(
         (response)=>{
-          console.log(response);
+          //console.log(response);
           this.getSucursales()
           agregarSucursal.reset()
 
@@ -124,7 +124,7 @@ export class DashBoardComponent implements OnInit {
           )
        },
        (error)=>{
-          console.log(<any>error);
+          //console.log(<any>error);
           Swal.fire({
             icon: 'error',
             title: error.error.message,
@@ -147,7 +147,7 @@ export class DashBoardComponent implements OnInit {
             title: err.error.message,
             footer: "Ingrese los datos de nuevo",
           });
-          console.log(err);
+          //console.log(err);
         },
         complete: ()=>{
   
@@ -168,7 +168,7 @@ export class DashBoardComponent implements OnInit {
         if (result.isConfirmed) {
           this._sucursalesService.EliminarUsuarios(idSucursal, this.token = this._usuarioService.obtenerToken()).subscribe(
             (response)=>{
-              console.log(response);
+              //console.log(response);
               this.getSucursales();
               Swal.fire(
                 '¡Eliminación completada!',
@@ -194,11 +194,11 @@ export class DashBoardComponent implements OnInit {
       this._productoSucursalService.ObtenerSucursalId(idSucursal, this.token).subscribe(
         (response) => {
           this.sucursalModelId = response.Sucursal;
-          console.log(response);
-          console.log(this.sucursalModelId);
+          //console.log(response);
+          //console.log(this.sucursalModelId);
         },
         (error)=>{
-          console.log(<any>error)
+          //console.log(<any>error)
         }
       )
     }

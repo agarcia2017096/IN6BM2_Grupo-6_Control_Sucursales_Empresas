@@ -43,7 +43,7 @@ export class EditarPerfilComponent implements OnInit {
 
     
     this.identidad = this._usuarioService.obtenerIdentidad();
-    console.log(" Ejemplificacion" +this.identidad.nombre)
+    //console.log(" Ejemplificacion" +this.identidad.nombre)
 
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
 
@@ -59,15 +59,15 @@ export class EditarPerfilComponent implements OnInit {
       (response) => {
         this.empresaModelId = response.empleadoEncontrado;
 
-        console.log(response.empleadoEncontrado);
+        //console.log(response.empleadoEncontrado);
 
-        console.log(response);
+        //console.log(response);
         
-        console.log(this.empresaModelId);
+        //console.log(this.empresaModelId);
 
       },
       (error)=>{
-        console.log(<any>error)
+        //console.log(<any>error)
       }
     )
   }
@@ -75,13 +75,13 @@ export class EditarPerfilComponent implements OnInit {
   putEmpresa(){
     this._empresasService.EditarUsuarios(this.empresaModelId, this._usuarioService.obtenerToken()).subscribe(
       (response)=>{
-        console.log(response);
-        console.log("response"+response.empresa)
+        //console.log(response);
+        //console.log("response"+response.empresa)
 
         localStorage.setItem("identidad", JSON.stringify(response.empresa))
 
         
-        console.log("Conversion -"+ this._usuarioService.obtenerIdentidad())
+        //console.log("Conversion -"+ this._usuarioService.obtenerIdentidad())
 
         Swal.fire({
           icon: 'success',
@@ -92,7 +92,7 @@ export class EditarPerfilComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
+        //console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.message,
@@ -150,11 +150,11 @@ export class EditarPerfilComponent implements OnInit {
   //   this._empresasService.ObtenerUsuariosId(idEmpresa, this._usuarioService.obtenerToken()).subscribe(
   //     (response) => {
   //       this.empresaModelId = response.empleadoEncontrado;
-  //       console.log(response);
-  //       console.log(this.empresaModelId);
+  //       //console.log(response);
+  //       //console.log(this.empresaModelId);
   //     },
   //     (error)=>{
-  //       console.log(<any>error)
+  //       //console.log(<any>error)
   //     }
   //   )
   // }

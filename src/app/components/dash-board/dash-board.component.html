@@ -145,11 +145,11 @@
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content" style="background-color: #E5E7E9">
-          <div class="modal-header" style="background-color: #222830">
+          <div class="modal-header" style="background-color: #040b14;">
             <h5 class="modal-title" id="exampleModalLabel" style="color: white"> <i class="bi bi-sliders2"></i> Agregar
               datos de la Sucursal</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+              <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
+            </div>
 
           <form #agregarSucursal="ngForm" method="POST" action="${pageContext.request.contextPath}/ServletSalonController?accion=insertar"
             class="was-validated">
@@ -193,7 +193,7 @@
               </div>
               
             </div>
-            <div class="modal-footer" style="background-color: #222830">
+            <div class="modal-footer" style="background-color: #040b14;">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="sumbit" class="btn btn-success" data-dismiss="createLabel" (click)="postSucursal(agregarSucursal)"data-bs-dismiss="modal">Guardar</button>
             </div>
@@ -210,7 +210,7 @@
       <div style="background-color: #040b14;" class="modal-header"> 
         <h5 style="color: white;" class="modal-title" id="exampleModalLabel"> <i class="bi bi-pen-fill"></i> Editar Sucursal
         </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
       </div>
       <div class="modal-body" style="background-color: #EBF5FB;">
         <form #editValid="ngForm" class="was-validated">

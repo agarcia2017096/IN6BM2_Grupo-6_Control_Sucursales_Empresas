@@ -39,7 +39,7 @@ export class EmpresasComponent implements OnInit {
   ngOnInit(): void {
     this.getEmpresas();
 
-    console.log(this.coloresDinamicos[this.random])
+    //console.log(this.coloresDinamicos[this.random])
 
   }
 
@@ -47,11 +47,11 @@ export class EmpresasComponent implements OnInit {
     this._empresasService.ObtenerUsuarios ().subscribe(
        (response) => {
          this.empresasModelGet = response.Empresas;
-         console.log(response.Empresas);
+         //console.log(response.Empresas);
 
        },
        (error)=>{
-         console.log(<any>error)
+         //console.log(<any>error)
        }
     )}
 
@@ -59,7 +59,7 @@ export class EmpresasComponent implements OnInit {
   postEmpresas (validEmpresa){
      this._empresasService.RegistrarEmpresas(this.empresasModelPost, this.token = this._usuarioService.obtenerToken()).subscribe(
          (response)=>{
-          console.log(<any>response);
+          //console.log(<any>response);
             this.getEmpresas()
             validEmpresa.reset()
             Swal.fire(
@@ -69,7 +69,7 @@ export class EmpresasComponent implements OnInit {
             )
          },
          (error)=>{
-            console.log(<any>error);
+            //console.log(<any>error);
             Swal.fire({
               icon: 'error',
               title: error.error.mensaje,
@@ -92,7 +92,7 @@ export class EmpresasComponent implements OnInit {
 
           this._empresasService.EliminarUsuarios(idEmpresa,  this.token = this._usuarioService.obtenerToken()).subscribe(
             (response)=>{
-              console.log(response);
+              //console.log(response);
               this.getEmpresas();
 
               Swal.fire(
@@ -119,11 +119,11 @@ export class EmpresasComponent implements OnInit {
     putEmpresa(){
       this._empresasService.EditarUsuarios(this.empresaModelId, this._usuarioService.obtenerToken()).subscribe(
         (response)=>{
-          console.log(response);
+          //console.log(response);
           this.getEmpresas();
         },
         (error)=>{
-          console.log(<any>error);
+          //console.log(<any>error);
           Swal.fire({
             icon: 'error',
             title: error.error.message,
@@ -137,11 +137,11 @@ export class EmpresasComponent implements OnInit {
       this._empresasService.ObtenerUsuariosId(idEmpresa, this._usuarioService.obtenerToken()).subscribe(
         (response) => {
           this.empresaModelId = response.empleadoEncontrado;
-          console.log(response);
-          console.log(this.empresaModelId);
+          //console.log(response);
+          //console.log(this.empresaModelId);
         },
         (error)=>{
-          console.log(<any>error)
+          //console.log(<any>error)
         }
       )
     }

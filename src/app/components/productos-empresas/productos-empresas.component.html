@@ -72,12 +72,12 @@
 
   <!-- ======= Mobile nav toggle button ======= -->
   
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header"
+  <button class="navbar-toggler z-index: 5" type="button" data-bs-toggle="collapse" data-bs-target="#header"
     aria-controls="header" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-</button>
+  </button>
 
   <!-- ======= Header ======= -->
-  <header id="header">
+  <header id="header"  >
     <div class="d-flex flex-column">
 
       <div class="profile">
@@ -116,44 +116,47 @@
   <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" style="background: #040b14">
-          <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke"><i
-              class="bi bi-file-earmark-plus-fill"></i>  Agregar Producto Empresa</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+          <div class="modal-header" style="background: #040b14">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke"><i
+                class="bi bi-file-earmark-plus-fill"></i>  Agregar Producto Empresa</h5>
+                <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
+              </div>
+          <div class="modal-body" style="background-color: #E5E7E9">
+            <form #validProducto="ngForm" class="was-validated">
+              <div class="mb-3">
+                <label for="NombreProducto"> Nombre del producto: </label>
+                <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto"
+                  #NombreProducto="ngModel" [(ngModel)]="productoModelPost.NombreProducto" required>
+              </div>
+              <div class="mb-3">
+                <label for="descripcion"> Descripcion del producto: </label>
+                <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+                  [(ngModel)]="productoModelPost.descripcion" required>
+              </div>
+              <div class="mb-3">
+                <label for="NombreProveedor"> Nombre del proveedor: </label>
+                <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor"
+                  #NombreProveedor="ngModel" [(ngModel)]="productoModelPost.NombreProveedor" required>
+              </div>
+              <div class="mb-3">
+                <label for="Stock">Stock </label>
+                <input  min="1" pattern ="[^0]" type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
+                  [(ngModel)]="productoModelPost.Stock" required>
+              </div>
+              <div class="mb-3">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="background: #040b14">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            [disabled]="!validProducto.form.valid" (click)="postProductos(validProducto)">Agregar</button>
+          </div>
         </div>
-        <div class="modal-body" style="background-color: #E5E7E9">
-          <form #validProducto="ngForm" class="was-validated">
-            <div class="mb-3">
-              <label for="NombreProducto"> Nombre del producto </label>
-              <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto"
-                #NombreProducto="ngModel" [(ngModel)]="productoModelPost.NombreProducto" required>
-            </div>
-            <div class="mb-3">
-              <label for="descripcion"> Descripcion del producto </label>
-              <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
-                [(ngModel)]="productoModelPost.descripcion" required>
-            </div>
-            <div class="mb-3">
-              <label for="NombreProveedor"> Nombre del proveedor </label>
-              <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor"
-                #NombreProveedor="ngModel" [(ngModel)]="productoModelPost.NombreProveedor" required>
-            </div>
-            <div class="mb-3">
-              <label for="Stock">Stock </label>
-              <input  min="1" pattern ="[^0]" type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
-                [(ngModel)]="productoModelPost.Stock" required>
-            </div>
-            <div class="mb-3">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer" style="background: #040b14">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-          [disabled]="!validProducto.form.valid" (click)="postProductos(validProducto)">Agregar</button>
-        </div>
-      </div>
+
+
+
     </div>
   </div>
   <!-- ======= Hero Section ======= -->
@@ -277,7 +280,7 @@
               </thead>
               <tbody>
                 <!-- Implementacion de ngFor -->
-                <tr *ngFor="let prod of productoModelGet | searchProveerdor:searchProveerdor  | searchProducto:searchProducto">
+                <tr *ngFor="let prod of productoModelGet | searchProveerdor:searchProveerdor ">
                   <td>{{prod.NombreProducto}}</td>
                   <td>{{prod.descripcion}}</td>
                   <td>{{prod.NombreProveedor}}</td>
@@ -381,22 +384,22 @@
       <div style="background-color: #040b14;" class="modal-header">
         <h5 style="color: white;" class="modal-title" id="exampleModalLabel"> <i class="bi bi-pen-fill"></i> Editar Producto de Empresa
         </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
       </div>
       <div class="modal-body" style="background-color: #EBF5FB;">
-        <form class="was-validated">
+        <form #productoValid="ngForm" class="was-validated">
           <div class="mb-3">
-            <label for="NombreProducto"> Nombre del producto </label>
+            <label for="NombreProducto"> Nombre del producto: </label>
             <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto"
               #NombreProducto="ngModel" [(ngModel)]="productoModelGetId.NombreProducto"  required>
           </div>
           <div class="mb-3">
-            <label for="descripcion"> Descripcion del producto </label>
+            <label for="descripcion"> Descripcion del producto: </label>
             <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
               [(ngModel)]="productoModelGetId.descripcion" required>
           </div>
           <div class="mb-3">
-            <label for="NombreProveedor"> Nombre del proveedor </label>
+            <label for="NombreProveedor"> Nombre del proveedor: </label>
             <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor"
               #NombreProveedor="ngModel" [(ngModel)]="productoModelGetId.NombreProveedor" required>
           </div>
@@ -411,7 +414,7 @@
       </div>
       <div class="modal-footer" style="background-color: #040b14;">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="editarProductos()">Guardar cambios</button>
+        <button [disabled]="!productoValid.form.valid" type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="editarProductos()">Guardar cambios</button>
       </div>
     </div>
   </div>
@@ -424,7 +427,7 @@
       <div style="background-color: #040b14;" class="modal-header">
         <h5 style="color: white;" class="modal-title" id="exampleModalLabel"> <i class="bi bi-send-check"></i>  Enviar Producto a Sucursal
         </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
       </div>
       <div class="modal-body" style="background-color: #EBF5FB;">
         <form #EnviarProducto="ngForm" class="was-validated">

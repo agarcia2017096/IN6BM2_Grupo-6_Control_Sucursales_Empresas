@@ -36,14 +36,14 @@ export class LoginComponent implements OnInit {
     return new Promise((resolve, reject)=>{
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
         (response)=>{
-         console.log(response);
+         //console.log(response);
 
           localStorage.setItem("token", response.token)
           
           resolve(response);
         },
         (error)=>{
-          console.log(<any>error);
+          //console.log(<any>error);
 
         }
       )
@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit {
 
         this.getTokenPromesa().then((respuesta)=>{
           localStorage.setItem("identidad", JSON.stringify(response.usuario))
-          console.log(response);
-          console.log(response.usuario.rol)
+          //console.log(response);
+          //console.log(response.usuario.rol)
           Swal.fire({
             icon: 'success',
             title: 'Bienvenido',
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
           })
           if(response.usuario.rol == "Empresa"){
             this._router.navigate(['/usuario/dash-board/' + response.usuario._id]);
-            console.log(response.usuario._id)
+            //console.log(response.usuario._id)
           }else {
             this._router.navigate(['/admin/empresas']);
           }
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
+        //console.log(<any>error);
         
         Swal.fire({
           icon: 'error',

@@ -56,26 +56,26 @@ export class ProductosEmpresasComponent implements OnInit {
    public idEmpresa;
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-      console.log("idEmpresa - console"+dataRuta.get('idEmpresa'));
+      //console.log("idEmpresa - //console"+dataRuta.get('idEmpresa'));
 
       this.getProductoId(dataRuta.get('idEmpresa'))
       this.idEmpresa = dataRuta.get('idEmpresa')
       this.getEmpresaId(dataRuta.get('idEmpresa'))
       this.getSucursales()
-      console.log(" modelo "+this.empresaModelId)
+      //console.log(" modelo "+this.empresaModelId)
     })
   }
 
   getSucursales (){
-    console.log('el id de la empresa es:' + this.idEmpresa)
+    //console.log('el id de la empresa es:' + this.idEmpresa)
       this._sucursalesService.ObtenerSucursales (this.idEmpresa, this.token).subscribe(
         (response) => {
           this.sucursalesModelGet = response.Sucursales;
-          console.log(response + 'hola');
+          //console.log(response + 'hola');
  
         },
         (error)=>{
-          console.log(<any>error)
+          //console.log(<any>error)
         }
      )
     
@@ -85,11 +85,11 @@ export class ProductosEmpresasComponent implements OnInit {
     this._empresasService.ObtenerUsuariosId(idEmpresa, this._usuarioService.obtenerToken()).subscribe(
       (response) => {
         this.empresaModelId = response.empleadoEncontrado;
-        console.log(response);
-        console.log(this.empresaModelId);
+        //console.log(response);
+        //console.log(this.empresaModelId);
       },
       (error)=>{
-        console.log(<any>error)
+        //console.log(<any>error)
       }
     )
   }
@@ -98,10 +98,10 @@ export class ProductosEmpresasComponent implements OnInit {
     this._productoService.obtenerProductoId(idEmpresa, this.token).subscribe(
       (response) =>{
         this.productoModelGet = response.producto;
-        console.log("response "+response);
-        console.log("idEmpresa "+idEmpresa);
+        //console.log("response "+response);
+        //console.log("idEmpresa "+idEmpresa);
 
-        console.log("Ejemplo "+this.productoModelGet);
+        //console.log("Ejemplo "+this.productoModelGet);
 
       },
       (error)=>{
@@ -115,13 +115,13 @@ export class ProductosEmpresasComponent implements OnInit {
       (response) =>{
         
         this.productoModelGetId = response.producto;
-        console.log(this.productoModelGetId);
+        //console.log(this.productoModelGetId);
         this.getProductoId(this.idEmpresa)
 
 
       },
       (error)=>{
-        console.log(<any>error);
+        //console.log(<any>error);
 
       }
     )
@@ -159,7 +159,7 @@ export class ProductosEmpresasComponent implements OnInit {
         })
       },
       (error) => {
-        console.log(error)
+        //console.log(error)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -181,7 +181,7 @@ export class ProductosEmpresasComponent implements OnInit {
         })
       },
       (error) => {
-        console.log(<any>error)
+        //console.log(<any>error)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -206,9 +206,9 @@ export class ProductosEmpresasComponent implements OnInit {
       if (result.isConfirmed) {
         this._productoService.eliminarProducto(idEmpresa, this.token).subscribe(
           (response)=>{
-            console.log(response);
-            console.log("idempresa "+idEmpresa)
-            console.log("getProductosID "+           this.getProductoId(idEmpresa)            )
+            //console.log(response);
+            //console.log("idempresa "+idEmpresa)
+            //console.log("getProductosID "+           this.getProductoId(idEmpresa)            )
             this.getProductoId(idEmpresa);
             Swal.fire(
               '¡Eliminado!',

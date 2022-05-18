@@ -101,13 +101,13 @@ export class InformacionSucursalesComponent implements OnInit {
 
 
       this.idEmpresa = this._usuarioService.obtenerIdentidad();
-      console.log('ID DE LA EMPRESA'+ this.idEmpresa._id)
+      //console.log('ID DE LA EMPRESA'+ this.idEmpresa._id)
 
       this.getProductoId(dataRuta.get("idSucursal"));
 
       this.getSucursalId(dataRuta.get("idSucursal"));
 
-      console.log(" id sucursal " + this.idEmpresa);
+      //console.log(" id sucursal " + this.idEmpresa);
 
       this.getSucursales(dataRuta.get("idSucursal"));
     });
@@ -119,11 +119,11 @@ export class InformacionSucursalesComponent implements OnInit {
       .subscribe(
         (response) => {
           this.sucursalesModelGet = response.producto;
-          console.log(this.sucursalesModelGet);
+          //console.log(this.sucursalesModelGet);
           this._activatedRoute.paramMap.subscribe((dataRuta) => {
-            console.log(" ARRAY" + this.sucursalesModelGet);
+            //console.log(" ARRAY" + this.sucursalesModelGet);
             this.sucursalesModelGet.forEach((element) => {
-              console.log(element);
+              //console.log(element);
             });
 
             this.getSucursalesGrafica(dataRuta.get("idSucursal"));
@@ -152,7 +152,7 @@ export class InformacionSucursalesComponent implements OnInit {
             this.chartData1[0].data.push(dato.StockSucursal);
            
            
-            console.log(this.chartData1)
+            //console.log(this.chartData1)
             this.chartColors[0].backgroundColor.push(
               `#${Math.floor(Math.random() * 16777215).toString(16)}`
             );
@@ -176,8 +176,8 @@ export class InformacionSucursalesComponent implements OnInit {
       .subscribe(
         (response) => {
           this.sucursalModelId = response.Sucursal;
-          console.log(response);
-          console.log(this.sucursalModelId);
+          //console.log(response);
+          //console.log(this.sucursalModelId);
         },
         (error) => {
           Swal.fire({
@@ -195,10 +195,10 @@ export class InformacionSucursalesComponent implements OnInit {
       .subscribe(
         (response) => {
           this.productoSucursalesModelGet = response.producto;
-          console.log("response " + response);
-          console.log("idSucursal " + idSucursal);
+          //console.log("response " + response);
+          //console.log("idSucursal " + idSucursal);
 
-          console.log("Ejemplo " + this.productoSucursalesModelGet);
+          //console.log("Ejemplo " + this.productoSucursalesModelGet);
         },
         (error) => {
           Swal.fire({
@@ -225,9 +225,9 @@ export class InformacionSucursalesComponent implements OnInit {
           .EliminarProducto(idSucursal, this.token)
           .subscribe(
             (response) => {
-              console.log(response);
-              console.log("idSucursal " + idSucursal);
-              console.log("getProductosID " + this.getProductoId(idSucursal));
+              //console.log(response);
+              //console.log("idSucursal " + idSucursal);
+              //console.log("getProductosID " + this.getProductoId(idSucursal));
 
               Swal.fire(
                 "¡Eliminado!",
@@ -253,9 +253,9 @@ export class InformacionSucursalesComponent implements OnInit {
               this._activatedRoute.paramMap.subscribe((dataRuta) => {
                 this.getSucursales(dataRuta.get("idSucursal"));
 
-                console.log(" ARRAY" + this.sucursalesModelGet);
+                //console.log(" ARRAY" + this.sucursalesModelGet);
                 this.sucursalesModelGet.forEach((element) => {
-                  console.log(element);
+                  //console.log(element);
                 });
               });
             },
@@ -273,8 +273,8 @@ export class InformacionSucursalesComponent implements OnInit {
 
   editarProductosSucursal(idSucursal, Ventas) {
     idSucursal = this.idEmpresa;
-    console.log(this.idSucursal);
-    console.log(" id sucursal " + idSucursal);
+    //console.log(this.idSucursal);
+    //console.log(" id sucursal " + idSucursal);
 
     this._productoSucursalService
       .venderProductoSucursal(
@@ -319,16 +319,16 @@ export class InformacionSucursalesComponent implements OnInit {
           this._activatedRoute.paramMap.subscribe((dataRuta) => {
             this.getSucursales(dataRuta.get("idSucursal"));
 
-            console.log(" ARRAY" + this.sucursalesModelGet);
+            //console.log(" ARRAY" + this.sucursalesModelGet);
             this.sucursalesModelGet.forEach((element) => {
-              console.log(element);
+              //console.log(element);
             });
           });
         },
 
         (error) => {
-          console.log(<any>error);
-          console.log("EJEMPLO");
+          //console.log(<any>error);
+          //console.log("EJEMPLO");
 
           Swal.fire({
             icon: "error",

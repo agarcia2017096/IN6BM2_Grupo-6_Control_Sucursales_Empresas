@@ -42,11 +42,11 @@ export class RegistroComponent implements OnInit {
     this._empresasService.RegistrarEmpresas(this.empresasModelPost, this.token = this._usuarioService.obtenerToken()).subscribe(
       (response) => {
         localStorage.setItem("identidad", JSON.stringify(response.usuario))
-        console.log(response);
+        //console.log(response);
           this._router.navigate(['/login']);
       },
       (error) => {
-        console.log(<any>error);
+        //console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.message,

@@ -11,7 +11,7 @@
           <ul class="nav navbar-nav pull-xs-center">
 
             <li class="nav-item mx-5 ">
-              <a id="dd" class="nav-link text-white" routerLink="/" routerLinkActive="active">Inicio <i
+              <a (click)="logOut()" id="dd" class="nav-link text-white" routerLink="/" routerLinkActive="active">Inicio <i
                   class="bi bi-clipboard-check"></i></a>
             </li>
 
@@ -139,11 +139,11 @@
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content" style="background-color: #E5E7E9">
-          <div class="modal-header" style="background-color: #222830">
+          <div class="modal-header" style="background-color: #040b14">
             <h5 class="modal-title" id="exampleModalLabel" style="color: white"> <i class="bi bi-sliders2"></i> Agregar
               datos de la empresa</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+              <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
+            </div>
 
           <form #validEmpresa="ngForm" method="POST" action="${pageContext.request.contextPath}/ServletSalonController?accion=insertar"
             class="was-validated">
@@ -163,8 +163,15 @@
                   <option value="Ventas de tecnología">Venta de tecnología</option>
                   <option value="Librería">Librería</option>
                   <option value="Deporte">Deporte</option>
-                  <option value="Supermercado">Supermercado</option>
+                  <option value="Venta de ropa">Venta de ropa</option>
+                  <option value="Venta de calzado">Venta de calzado</option>
+                  <option value="Musical">Musical</option>
+                  <option value="Floristería">Floristería</option>
                   <option value="Cine">Cine</option>
+                  <option value="Distribuidora">Distribuidora</option>
+                  <option value="Banco">Banco</option>
+                  <option value="Supermercado">Supermercado</option>
+                  
                 </select>
               </div>
               <div class="form-group">
@@ -172,14 +179,23 @@
                 <input type="password" class="form-control" id="inputPassword" name="password" #password="ngModel"
                   [(ngModel)]="empresasModelPost.password" required>
               </div>
-              <div class="form-group">
-                <label for="nombreEmpresa"> Usuario: </label>
-                <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel"
+
+              <div class="col-md-12">
+                <label class="form-label" for="form3Example1n">Usuario:</label>
+    
+                <div class="input-group mb-3 ">
+                  
+                  <div class="input-group-prepend">
+                    <span style="background-color: rgb(236, 241, 247)"class="input-group-text" id="basic-addon1" class="form-control ">@</span>
+                  </div>
+                  <input  type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel"
                   [(ngModel)]="empresasModelPost.usuario" required>
+                </div>
+    
               </div>
             </div>
 
-            <div class="modal-footer" style="background-color: #222830">
+            <div class="modal-footer" style="background-color: #040b14">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button [disabled]="!validEmpresa.form.valid" type="sumbit" class="btn btn-success" (click)="postEmpresas(validEmpresa)"
                 data-dismiss="createLabel" data-bs-dismiss="modal">Guardar</button>
@@ -325,13 +341,13 @@
 <div class="modal fade" id="modalEditarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="background-color: #E5E7E9">
-      <div class="modal-header" style="background-color: #222830">
+      <div class="modal-header" style="background-color: #040b14">
         <h5 class="modal-title" id="exampleModalLabel" style="color: white"> <i class="bi bi-sliders2"></i> Editar
           datos de la empresa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+          <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
+        </div>
 
-      <form method="POST" action="${pageContext.request.contextPath}/ServletSalonController?accion=insertar"
+      <form  #editForm="ngForm" method="POST" action="${pageContext.request.contextPath}/ServletSalonController?accion=insertar"
         class="was-validated">
         <div class="modal-body">
 
@@ -349,21 +365,37 @@
               <option value="Ventas de tecnología">Venta de tecnología</option>
               <option value="Librería">Librería</option>
               <option value="Deporte">Deporte</option>
-              <option value="Supermercado">Supermercado</option>
+              <option value="Venta de ropa">Venta de ropa</option>
+              <option value="Venta de calzado">Venta de calzado</option>
+              <option value="Musical">Musical</option>
+              <option value="Floristería">Floristería</option>
               <option value="Cine">Cine</option>
+              <option value="Distribuidora">Distribuidora</option>
+              <option value="Banco">Banco</option>
+              <option value="Supermercado">Supermercado</option>
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="nombreEmpresa"> Usuario: </label>
-            <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel"
+          <div class="col-md-12">
+            <label class="form-label" for="form3Example1n">Usuario:</label>
+
+            <div class="input-group mb-3 ">
+              
+              <div class="input-group-prepend">
+                <span style="background-color: rgb(236, 241, 247)"class="input-group-text" id="basic-addon1" class="form-control ">@</span>
+              </div>
+              <input  type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel"
               [(ngModel)]="empresaModelId.usuario" required>
+            </div>
+
           </div>
+        
+
         </div>
 
-        <div class="modal-footer" style="background-color: #222830">
+        <div class="modal-footer" style="background-color: #040b14">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="sumbit" class="btn btn-success" (click)="putEmpresa()"
+          <button [disabled]="!editForm.form.valid" type="sumbit" class="btn btn-success" (click)="putEmpresa()"
             data-dismiss="createLabel" data-bs-dismiss="modal">Guardar</button>
         </div>
       </form>
