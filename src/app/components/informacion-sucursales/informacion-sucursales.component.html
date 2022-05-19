@@ -189,7 +189,7 @@
             <div class="card mb-4">
               <div class="card-header" style="background-color: #222830;color: white;" >
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-9">
 
                     <i class="fas fa-table me-1 "></i>
                     <button type="button" class="btn color-botones " data-bs-toggle="modal" >
@@ -198,17 +198,17 @@
                        Productos de sucursal
                   </div>
                   
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="input-group">
-                      <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-                      <button style="color: white" type="button" class="btn btn-outline-secondary"><i class="bi bi-search"></i> Buscar</button>
+                      <input  [(ngModel)]="search" type="text" class="form-control" placeholder="Busqueda de producto" aria-label="Text input with segmented dropdown button">
+                      <button style="color: white;border-color: gray;" type="button" class="btn "><i class="bi bi-search"></i> Buscar</button>
                       <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
                       </button>
                       <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" >Ordenar de mayor a menor</a></li>
+                        <li><a id="opOrder" class="dropdown-item" (click)="getProductoIdMayorMenor(idSucursal)" >Ordenar stock de mayor a menor</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" >Ordenar de meno a mayor</a></li>
+                        <li><a id="opOrder" class="dropdown-item" (click)="getProductoIdMenorMayor(idSucursal)">Ordenar  stock de meno a mayor</a></li>
                       </ul>
                     </div>                  
                   </div>
@@ -276,7 +276,7 @@
                 </thead>
                 <tbody>
                   <!-- Implementacion de ngFor -->
-                  <tr *ngFor="let prod of sucursalesModelGet">
+                  <tr *ngFor="let prod of sucursalesModelGet | search: search">
                     <td class="col-md-3" style="padding-left:3rem">{{prod.NombreProductoSucursal}}</td>
                     <td class="col-md-3 text-center">{{prod.StockSucursal}}</td>
                     <td class="col-md-3 text-center">{{prod.Vendido}}</td>

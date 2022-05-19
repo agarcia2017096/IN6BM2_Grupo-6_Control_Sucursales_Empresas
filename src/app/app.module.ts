@@ -21,6 +21,8 @@ import { DefaultAdminComponent } from './components/default-admin/default-admin.
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { SearchProveerdorPipe } from './pipes/search-proveerdor.pipe';
 import { SearchProductoPipe } from './pipes/search-producto.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { SearchProductoPipe } from './pipes/search-producto.pipe';
     EditarPerfilComponent,
     SearchProveerdorPipe,
     SearchProductoPipe,
+    SearchPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

@@ -65,6 +65,7 @@ export class InformacionSucursalesComponent implements OnInit {
 
   public productoSucursalesModelGet: ProductoSucursal;
   public productoSucursalesModelGetId: ProductoSucursal;
+  public search;
 
   public token;
   public identidad;
@@ -108,10 +109,11 @@ export class InformacionSucursalesComponent implements OnInit {
       this.getSucursalId(dataRuta.get("idSucursal"));
 
       //console.log(" id sucursal " + this.idEmpresa);
-
+      this.idSucursal = dataRuta.get("idSucursal")
       this.getSucursales(dataRuta.get("idSucursal"));
     });
   }
+  refresh(): void { window.location.reload(); }
 
   getSucursales(idSucursal) {
     this._productoSucursalService
@@ -342,4 +344,46 @@ export class InformacionSucursalesComponent implements OnInit {
   logOut(){
     localStorage.clear()
   }
+
+
+  getProductoIdMayorMenor(idSucursal) {
+   // console.log('hizo clic')
+    this._productoSucursalService
+      .ObtenerProductosSucursalMayorMenor(idSucursal, this.token)
+      .subscribe(
+        (response) => {
+          //console.log(response);
+          this.sucursalesModelGet = response.mayorMenor;
+          //this.refresh();
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.error.message,
+          });
+        }
+      );
+  }
+
+  getProductoIdMenorMayor(idSucursal) {
+    //console.log('hizo clic')
+    this._productoSucursalService
+      .ObtenerProductosSucursalMenorMayor(idSucursal, this.token)
+      .subscribe(
+        (response) => {
+         // console.log(response);
+          this.sucursalesModelGet = response.menorMayor;
+          //this.refresh();
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.error.message,
+          });
+        }
+      );
+  }
+
 }

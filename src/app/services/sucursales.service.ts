@@ -42,4 +42,16 @@ export class SucursalesService {
     return this._http.delete(this.url + '/eliminarSucursales/' + id, { headers: headersToken })
   }
 
+  ObtenerProductosSucursalMayorMenor(idEmpresa, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStock/' + idEmpresa, { headers: headersToken })
+  }
+
+  ObtenerProductosSucursalMenorMayor(idEmpresa, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStockM/' + idEmpresa, { headers: headersToken })
+  }
+
 }

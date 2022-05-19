@@ -53,4 +53,16 @@ export class ProductosSucursalService {
     return this._http.put(this.url + '/venderProductosSucursal/' + idSucursal , parametros, {headers:headersToken})
   }
 
+  ObtenerProductosSucursalMayorMenor(idSucursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStock/' + idSucursal, { headers: headersToken })
+  }
+
+  ObtenerProductosSucursalMenorMayor(idSucursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStockM/' + idSucursal, { headers: headersToken })
+  }
+
 }

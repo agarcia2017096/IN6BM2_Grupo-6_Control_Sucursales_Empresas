@@ -22,13 +22,13 @@ export class ProductosEmpresasComponent implements OnInit {
   public productoModelPost: Producto;
   public productoModelGetId: Producto;
   public sucursalesModelGet: Sucursales ;
-  public searchProveerdor;
-  public searchProducto;
+  public search;
+
 
 
   public productoSucursalesModel: ProductoSucursal;
 
-
+ public searchProducto
   public token
   public identidad;
   public empresaModelId: Empresas;
@@ -58,6 +58,7 @@ export class ProductosEmpresasComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
       //console.log("idEmpresa - //console"+dataRuta.get('idEmpresa'));
 
+      console.log(this.idEmpresa)
       this.getProductoId(dataRuta.get('idEmpresa'))
       this.idEmpresa = dataRuta.get('idEmpresa')
       this.getEmpresaId(dataRuta.get('idEmpresa'))
@@ -65,6 +66,8 @@ export class ProductosEmpresasComponent implements OnInit {
       //console.log(" modelo "+this.empresaModelId)
     })
   }
+  refresh(): void { window.location.reload(); }
+
 
   getSucursales (){
     //console.log('el id de la empresa es:' + this.idEmpresa)
@@ -236,4 +239,46 @@ export class ProductosEmpresasComponent implements OnInit {
     //localStorage.removeItem("token")
   }
 
+  getProductoIdMayorMenor(idEmpresa) {
+    //console.log('hizo clic')
+    this._productoService
+      .ObtenerProductosEmpresaMayorMenor(idEmpresa, this.token)
+      .subscribe(
+        (response) => {
+          //console.log(response);
+          this.productoModelGet = response.mayorMenor;
+          //this.refresh();
+        },
+        (error) => {
+          //console.log(error)
+
+          Swal.fire({
+            icon: "error",
+            title: "Oops...-",
+            text: error.error.message,
+          });
+        }
+      );
+  }
+
+  getProductoIdMenorMayor(idEmpresa) {
+    //console.log('hizo clic')
+    this._productoService
+      .ObtenerProductosEmpresaMenorMayor(idEmpresa, this.token)
+      .subscribe(
+        (response) => {
+          //console.log(response);
+          this.productoModelGet = response.menorMayor;
+          //this.refresh();
+        },
+        (error) => {
+          //console.log(error)
+          Swal.fire({
+            icon: "error",
+            title: "Oops...-",
+            text: error.error.message,
+          });
+        }
+      );
+  }
 }

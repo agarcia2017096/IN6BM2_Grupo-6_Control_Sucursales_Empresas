@@ -46,4 +46,16 @@ export class ProductosService {
 
     return this._http.delete(this.url + '/eliminarProductoEmpresa/' + id, { headers: headersToken })
   }
+
+  ObtenerProductosEmpresaMayorMenor(idEmpresa, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStockEmpresa/' + idEmpresa, { headers: headersToken })
+  }
+
+  ObtenerProductosEmpresaMenorMayor(idEmpresa, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/obtenerStockEmpresaM/' + idEmpresa, { headers: headersToken })
+  }
 }
