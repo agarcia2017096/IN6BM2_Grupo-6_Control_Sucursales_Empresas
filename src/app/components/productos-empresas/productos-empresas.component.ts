@@ -253,9 +253,10 @@ export class ProductosEmpresasComponent implements OnInit {
           //console.log(error)
 
           Swal.fire({
-            icon: "error",
-            title: "Oops...-",
+            icon: "info",
+            title: "Información",
             text: error.error.message,
+            footer: error.error.informacion
           });
         }
       );
@@ -274,9 +275,11 @@ export class ProductosEmpresasComponent implements OnInit {
         (error) => {
           //console.log(error)
           Swal.fire({
-            icon: "error",
-            title: "Oops...-",
+            icon: "info",
+            title: "Información",
             text: error.error.message,
+            footer: error.error.informacion
+
           });
         }
       );

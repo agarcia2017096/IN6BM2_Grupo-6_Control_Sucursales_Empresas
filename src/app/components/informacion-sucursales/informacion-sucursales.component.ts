@@ -392,12 +392,14 @@ export class InformacionSucursalesComponent implements OnInit {
           //console.log(response);
           this.sucursalesModelGet = response.mayorMenor;
           //this.refresh();
+          
         },
         (error) => {
           Swal.fire({
-            icon: "error",
-            title: "Oops...",
+            icon: "info",
+            title: "Información",
             text: error.error.message,
+            footer: error.error.informacion
           });
         }
       );
@@ -412,12 +414,15 @@ export class InformacionSucursalesComponent implements OnInit {
          // console.log(response);
           this.sucursalesModelGet = response.menorMayor;
           //this.refresh();
+
         },
         (error) => {
           Swal.fire({
-            icon: "error",
-            title: "Oops...",
+            icon: "info",
+            title: "Información",
             text: error.error.message,
+            footer: error.error.informacion
+
           });
         }
       );

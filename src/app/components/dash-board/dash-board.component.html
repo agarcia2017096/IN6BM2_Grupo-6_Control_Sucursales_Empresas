@@ -8,11 +8,17 @@
     <div class="collapse navbar-collapse justify-content-center text-white" id="navbarNav">
       <ul class="nav navbar-nav pull-xs-center">
 
+        <li *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'" class="nav-item mx-5 text-center">
+          <a id="dd" class="nav-link text-white" [routerLink]="['/admin/empresas']" routerLinkActive="active">Volver <i
+              class="bi bi-arrow-left-short"></i></a>
+        </li>
+
         <li class="nav-item mx-5 ">
           <a (click)="logOut()" id="dd" class="nav-link text-white" routerLink="/" routerLinkActive="active">Inicio <i
               class="bi bi-clipboard-check"></i></a>
         </li>
 
+        
         <li class="nav-item mx-3 ">
 
         </li>
@@ -126,7 +132,7 @@
      </div>
 
      <div class="col-3 col-sm-3">
-      <a id="botomOptionsAdd" class="btn btn-light btn-block" data-bs-toggle="modal" data-bs-target="#addModal"*ngIf="_usuarioService.obtenerIdentidad().rol === 'Empresa'">
+      <a id="botomOptionsAdd" class="btn btn-light btn-block" data-bs-toggle="modal" data-bs-target="#addModal" *ngIf="_usuarioService.obtenerIdentidad().rol === 'Empresa'">
         <h6>
           <i  class="bi bi-plus-circle-dotted"></i> Agregar Sucursales
         </h6>
@@ -190,7 +196,7 @@
             </div>
             <div class="modal-footer" style="background-color: #040b14;">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="sumbit" class="btn btn-success" data-dismiss="createLabel" (click)="postSucursal(agregarSucursal)"data-bs-dismiss="modal">Guardar</button>
+              <button [(disabled)]="!agregarSucursal.form.valid" type="sumbit" class="btn btn-success" data-dismiss="createLabel" (click)="postSucursal(agregarSucursal)"data-bs-dismiss="modal">Guardar</button>
             </div>
           </form>
 

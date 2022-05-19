@@ -301,7 +301,7 @@
                                 <label class="text-left" for="NombreProductoSucursal"> Nombre del producto </label>
                     
                                 <select id="NombreProductoSucursal" style="width:100%; height: 2rem;" name="NombreProductoSucursal" 
-                                #NombreSucursal="ngModel" [(ngModel)]="productoSucursalesModelGetId.NombreProductoSucursal" Ventas >
+                                #NombreSucursal="ngModel" [(ngModel)]="productoSucursalesModelGetId.NombreProductoSucursal" Ventas required >
                                   <option  *ngFor="let producto of productoSucursalesModelGet" value={{producto.NombreProductoSucursal}}>{{producto.NombreProductoSucursal}}</option>
                                 </select>
                                 

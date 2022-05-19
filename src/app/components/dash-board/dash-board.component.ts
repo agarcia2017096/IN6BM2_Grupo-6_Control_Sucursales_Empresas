@@ -105,6 +105,16 @@ export class DashBoardComponent implements OnInit {
         },
         (error)=>{
           //console.log(<any>error)
+          if(this._usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'){
+            Swal.fire({
+              icon: "info",
+              title: "Información",
+              text: error.error.message,
+              footer: error.error.informacion
+    
+            });
+          }
+
         }
      )
     

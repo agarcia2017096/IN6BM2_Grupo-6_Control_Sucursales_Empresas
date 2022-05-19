@@ -52,6 +52,7 @@ export class EmpresasComponent implements OnInit {
        },
        (error)=>{
          //console.log(<any>error)
+
        }
     )}
 
@@ -63,7 +64,7 @@ export class EmpresasComponent implements OnInit {
             this.getEmpresas()
             validEmpresa.reset()
             Swal.fire(
-              'Se agrego correctamente su empresa!',
+              'Se agrego correctamente la empresa',
               '',
               'success'
             )
