@@ -47,7 +47,7 @@ export class ProductosEmpresasComponent implements OnInit {
   this.productoModelPost = new Producto('','','','',0,'');
   this.productoSucursalesModelPost = new ProductoSucursal('','',0,0,'','')
   this.productoModelGetId = new Producto('','','','',0,'');
-  this.empresaModelId = new Empresas('','','','','','');
+  this.empresaModelId = new Empresas('','','','','','','');
   this.token = this._usuarioService.obtenerToken();
   this.identidad = this._usuarioService.obtenerIdentidad();
 

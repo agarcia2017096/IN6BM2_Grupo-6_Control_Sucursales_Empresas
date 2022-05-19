@@ -6,6 +6,9 @@ export class Empresas {
     public password: String,
     public rol: String,
     public usuario: String,
+    public descripcion: String,
+
+
   ){
   }
 }

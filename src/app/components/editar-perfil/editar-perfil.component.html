@@ -121,8 +121,9 @@
   
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example8">Descripción extra:</label>
-                      <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="2"></textarea>
+                      <label class="form-label" for="form3Example8">Descripción extra:</label>  
+                      <textarea [(ngModel)]="empresaModelId.descripcion" id="inputDescripcion" name="descripcion" #descripcion="ngModel"  class="form-control form-control-lg"  rows="3"></textarea>
+
                     </div>
 
                     <br>

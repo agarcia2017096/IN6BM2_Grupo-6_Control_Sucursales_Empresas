@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
   public usuarioModel: Empresas;
   public empresasModelPost: Empresas;
   constructor(private _empresasService: EmpresasService, private _usuarioService: UsuarioService, private _router: Router) {
-    this.empresasModelPost = new Empresas('','', '', '', '', '')
+    this.empresasModelPost = new Empresas('','', '', '', '', '','')
     this.token = this._usuarioService.obtenerToken();
   }
 

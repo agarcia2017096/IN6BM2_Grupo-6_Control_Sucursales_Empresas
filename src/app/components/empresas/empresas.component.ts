@@ -29,8 +29,8 @@ export class EmpresasComponent implements OnInit {
 
 
   constructor(private _empresasService: EmpresasService, public _usuarioService: UsuarioService) {
-    this.empresasModelPost = new Empresas('','','','','','')
-    this.empresaModelId = new Empresas('','','','','','');
+    this.empresasModelPost = new Empresas('','','','','','','')
+    this.empresaModelId = new Empresas('','','','','','','');
     this.token = this._usuarioService.obtenerToken();
     this.identidad = this._usuarioService.obtenerIdentidad();
 

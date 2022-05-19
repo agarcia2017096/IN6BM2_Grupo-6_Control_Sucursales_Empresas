@@ -31,7 +31,7 @@ export class EditarPerfilComponent implements OnInit {
 
   //this.productoModelGet = new Productos('','','',0,0,'');
 
-  this.empresaModelId = new Empresas('','','','','','');
+  this.empresaModelId = new Empresas('','','','','','','');
   this.token = this._usuarioService.obtenerToken();
   this.identidad = this._usuarioService.obtenerIdentidad();
 

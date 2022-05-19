@@ -72,9 +72,11 @@
 
   <!-- ======= Mobile nav toggle button ======= -->
   
-  <button class="navbar-toggler z-index: 5" type="button" data-bs-toggle="collapse" data-bs-target="#header"
-    aria-controls="header" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-  </button>
+
+  
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
 
   <!-- ======= Header ======= -->
   <header id="header"  >
@@ -100,9 +102,11 @@
             <a class="nav-link scrollto active" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"><i
                 class="bi bi-plus-square"></i> <span>Agregar Producto </span></a>
           </li>
+
           <li>
-            <a class="nav-link scrollto"><i class="bi bi-search"></i> <span>Buscar</span></a>
+            <a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#modalBuscarProducto"><i class="bi bi-search"></i> <span>Buscar Producto</span></a>
           </li>
+
           <li>
             <a class="nav-link scrollto" [routerLink]="['/usuario/dash-board', idEmpresa]" routerLinkActive="active"><i
                 class="bi bi-bar-chart-line"></i> <span>Sucursales </span></a>
@@ -159,6 +163,37 @@
 
     </div>
   </div>
+
+    <!-- Modal Buscar Producto -->
+    <div class="modal fade "  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalBuscarProducto" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background: #040b14">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke">
+              <i class="bi bi-search"></i>  Buscar productos de empresa</h5>
+                <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal"  aria-label="Close"></button>
+              </div>
+          <div class="modal-body" style="background-color: #E5E7E9">
+            <form #validSearch="ngForm" class="was-validated">
+              <div class="mb-3">
+                <label for="NombreProducto"> Nombre del producto: </label>
+                <input [(ngModel)]="searchProducto"  type="text" class="form-control" id="inputNombreProducto" 
+                placeholder="Busqueda de producto"name="NombreProducto" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="background: #040b14">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            [disabled]="!validSearch.form.valid" >Buscar</button>
+          </div>
+        </div>
+
+
+
+    </div>
+  </div>
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
@@ -248,8 +283,8 @@
           
           <div class="col-md-4">
             <div class="input-group" style="background-color: #222830;border-radius: 0.5rem;">
-              <input [(ngModel)]="searchProveerdor" [(ngModel)]="searchProducto" type="text" placeholder="Busqueda de detalles de producto" class="form-control" aria-label="Text input with segmented dropdown button">
-              <button  style="color: white;border-top-right-radius: 0.5rem;border-bottom-right-radius: 0.5rem" type="" class="btn btn-outline-secondary"><i class="bi bi-search"></i> Buscar</button>
+              <input [(ngModel)]="searchProveerdor"  type="text" placeholder="Busqueda de proveedor" class="form-control" aria-label="Text input with segmented dropdown button">
+              <button  style="color: white;border-top-right-radius: 0.5rem;border-bottom-right-radius: 0.5rem;background-color: #222830;" type="" ><i class="bi bi-search"></i> Buscar</button>
 
             </div>                  
           </div>
@@ -280,7 +315,7 @@
               </thead>
               <tbody>
                 <!-- Implementacion de ngFor -->
-                <tr *ngFor="let prod of productoModelGet | searchProveerdor:searchProveerdor ">
+                <tr *ngFor="let prod of productoModelGet | searchProveerdor:searchProveerdor | searchProducto:searchProducto">
                   <td>{{prod.NombreProducto}}</td>
                   <td>{{prod.descripcion}}</td>
                   <td>{{prod.NombreProveedor}}</td>
