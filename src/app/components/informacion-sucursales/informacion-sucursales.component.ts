@@ -28,9 +28,17 @@ export class InformacionSucursalesComponent implements OnInit {
 
   // GRAFICA CANTIDAD STOCK POR PRODUCTO
   chartOptions1 = {
-    responsive: true
-    
-   };
+    responsive: true,
+    scales: {
+      yAxes: [{
+              display: true,
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+    }
+
+  };
 
   chartLabels1: any = [];
   chartLegend1 = true;
@@ -100,10 +108,11 @@ export class InformacionSucursalesComponent implements OnInit {
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
 
-
       this.idEmpresa = this._usuarioService.obtenerIdentidad();
-      //console.log('ID DE LA EMPRESA'+ this.idEmpresa._id)
+      //console.log('ID DE LA EMPRESA'+ this.idEmpresa._id
 
+      this.idSucursal = dataRuta.get("idSucursal")
+      console.log(this.idSucursal)
       this.getProductoId(dataRuta.get("idSucursal"));
 
       this.getSucursalId(dataRuta.get("idSucursal"));
@@ -236,7 +245,25 @@ export class InformacionSucursalesComponent implements OnInit {
                 "El producto fue eliminado exitosamente",
                 "success"
               );
+          // GRAFICA CANTIDAD STOCK POR PRODUCTO
+          this.chartOptions1 = {
+            responsive: true,
+            scales: {
+              yAxes: [{
+                      display: true,
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+            }
+          };
+          this.chartLabels1 = [];
+          this.chartLegend1 = true;
+          this.chartPlugins1 = [];
 
+          this.chartData1 = [{ data: [], label: 'Stock' }];
+
+          
               this.chartOptions = {
                 responsive: true,
               };
@@ -260,6 +287,8 @@ export class InformacionSucursalesComponent implements OnInit {
                   //console.log(element);
                 });
               });
+
+              
             },
             (error) => {
               Swal.fire({
@@ -274,7 +303,7 @@ export class InformacionSucursalesComponent implements OnInit {
   }
 
   editarProductosSucursal(idSucursal, Ventas) {
-    idSucursal = this.idEmpresa;
+    idSucursal = this.idSucursal;
     //console.log(this.idSucursal);
     //console.log(" id sucursal " + idSucursal);
 
@@ -286,7 +315,7 @@ export class InformacionSucursalesComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          this.getProductoId(this.idEmpresa);
+          this.getProductoId(this.idSucursal);
           //this.chartData.push(response.Vendido)
           Ventas.reset()
           Swal.fire({
@@ -296,6 +325,14 @@ export class InformacionSucursalesComponent implements OnInit {
           // GRAFICA CANTIDAD STOCK POR PRODUCTO
           this.chartOptions1 = {
             responsive: true,
+            scales: {
+              yAxes: [{
+                      display: true,
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+            }
           };
           this.chartLabels1 = [];
           this.chartLegend1 = true;

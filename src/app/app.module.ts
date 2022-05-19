@@ -19,8 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultRouterComponent } from './components/default-router/default-router.component';
 import { DefaultAdminComponent } from './components/default-admin/default-admin.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-import { SearchProveerdorPipe } from './pipes/search-proveerdor.pipe';
-import { SearchProductoPipe } from './pipes/search-producto.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 
@@ -39,8 +37,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     DefaultRouterComponent,
     DefaultAdminComponent,
     EditarPerfilComponent,
-    SearchProveerdorPipe,
-    SearchProductoPipe,
     SearchPipe,
     FilterPipe,
   ],
