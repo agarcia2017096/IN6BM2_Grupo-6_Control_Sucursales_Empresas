@@ -76,19 +76,16 @@ export class DashBoardComponent implements OnInit {
   }
 
   getSucursalesId(idSucursal) {
-    this._sucursalesService.ObtenerSucursalesId(this._usuarioService.obtenerToken(), idSucursal).subscribe({
-      
+    this._sucursalesService.ObtenerSucursalesId(idSucursal,this.token).subscribe({
+
       next: (response: any)=> {  // 200
-        
+
         this.sucursalModelIdEdit = response.Sucursal
+        //console.log(response.Sucursal)
         //console.log(this.sucursalModelIdEdit)
       },
       error: (err) => { //400 404 500 401 403
-        Swal.fire({
-          icon: "error",
-          title: err.error.mensaje,
-          footer: "Ingrese los datos de nuevo",
-        });
+
       },
       complete: ()=>{
 
@@ -96,24 +93,25 @@ export class DashBoardComponent implements OnInit {
   }
 
   getSucursales (){
+    console.log("IDEMPRESA "+ this.idEmpresa)
     //console.log('el id de la empresa es:' + this.idEmpresa)
       this._sucursalesService.ObtenerSucursales (this.idEmpresa, this.token).subscribe(
         (response) => {
           this.sucursalesModelGet = response.Sucursales;
-          //console.log(response + 'hola');
- 
-        },
-        (error)=>{
-          //console.log(<any>error)
-          if(this._usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'){
+          if(response.Sucursales.length == 0){
             Swal.fire({
               icon: "info",
               title: "Información",
-              text: error.error.message,
-              footer: error.error.informacion
+              text: "Actualmente no existen sucursales en la empresa",
+              footer: "Cada empresa es la encargada de registrar las sucursales"
     
             });
           }
+        },
+        (error)=>{
+          console.log(<any>error)
+          
+
 
         }
      )
@@ -165,7 +163,7 @@ export class DashBoardComponent implements OnInit {
     }
 
     deleteSucursales(idSucursal){
-      
+      console.log(idSucursal);
       Swal.fire({
         title: '¿Está seguro que desea eliminar la sucursal?',
         text: "Será eliminada permanentemente",

@@ -79,6 +79,7 @@ export class ProductosEmpresasComponent implements OnInit {
         },
         (error)=>{
           //console.log(<any>error)
+
         }
      )
     
@@ -105,9 +106,19 @@ export class ProductosEmpresasComponent implements OnInit {
         //console.log("idEmpresa "+idEmpresa);
 
         //console.log("Ejemplo "+this.productoModelGet);
+        if(response.producto.length==0){
+          Swal.fire({
+            icon: "info",
+            title: "Información",
+            text: "Actualemnte no existen productos",
+            footer: "Debe agregar nuevos productos a la empresa",
+
+          }); 
+        }
 
       },
       (error)=>{
+
 
       }
     )

@@ -139,6 +139,16 @@ export class InformacionSucursalesComponent implements OnInit {
 
             this.getSucursalesGrafica(dataRuta.get("idSucursal"));
           });
+
+          if(response.producto.length==0){
+            Swal.fire({
+              icon: "info",
+              title: "Información",
+              text: "Actualemnte no existen productos",
+              footer: "Debe agregar nuevos productos a la sucursal",
+  
+            }); 
+          }
         },
         (error) => {
           Swal.fire({

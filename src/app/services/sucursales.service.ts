@@ -19,7 +19,7 @@ export class SucursalesService {
     return this._http.get(this.url + '/sucursales/' + idEmpresa, { headers: headersToken })
   }
 
-  ObtenerSucursalesId(token, idSucursal): Observable<any>{
+  ObtenerSucursalesId( idSucursal,token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token)
 
     return this._http.get(this.url + '/sucursalId/' + idSucursal, { headers: headersToken})

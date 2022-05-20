@@ -143,7 +143,7 @@
               </div>
               <div class="mb-3">
                 <label for="Stock">Stock </label>
-                <input  min="1" pattern ="[^0]" type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
+                <input  min="1" type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
                   [(ngModel)]="productoModelPost.Stock" required>
               </div>
               <div class="mb-3">
@@ -445,7 +445,7 @@
           </div>
           <div class="mb-3">
             <label for="Stock">Stock </label>
-            <input type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
+            <input type="Number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel" min="0"
               [(ngModel)]="productoModelGetId.Stock" required>
           </div>
           <div class="mb-3">

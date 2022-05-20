@@ -48,7 +48,15 @@ export class EmpresasComponent implements OnInit {
        (response) => {
          this.empresasModelGet = response.Empresas;
          //console.log(response.Empresas);
-
+         if(response.Empresas.length == 0){
+          Swal.fire({
+            icon: "info",
+            title: "Información",
+            text: "Actualmente no existen empresas",
+            footer: "Debe registrar empresas "
+  
+          });
+        }
        },
        (error)=>{
          //console.log(<any>error)
@@ -70,10 +78,9 @@ export class EmpresasComponent implements OnInit {
             )
          },
          (error)=>{
-            //console.log(<any>error);
             Swal.fire({
               icon: 'error',
-              title: error.error.mensaje,
+              title: error.error.message,
               footer: 'Ingrese los datos de nuevo'
             })
          }
@@ -124,6 +131,8 @@ export class EmpresasComponent implements OnInit {
           this.getEmpresas();
         },
         (error)=>{
+          console.log(<any>error);
+
           //console.log(<any>error);
           Swal.fire({
             icon: 'error',

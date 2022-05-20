@@ -23,7 +23,7 @@
 
         </li>
 
-        <div class="dropdown nav-item mx-5 " style="position: relative; z-index: 3" *ngIf="_usuarioService.obtenerIdentidad()">
+       <div class="dropdown nav-item mx-5 " style="position: relative; z-index: 3" *ngIf="_usuarioService.obtenerIdentidad()">
           <button  style="color: whitesmoke;" class="btn dropdown-toggle dd2 col-12" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
             {{ _usuarioService.obtenerIdentidad().nombre }} <i class="bi bi-person-badge"></i>
@@ -49,7 +49,7 @@
                 style="background-color: #E74C3C">↤ SALIR</a>
             </div>
           </div>
-        </div>
+        </div> 
 
       </ul>
     </div>
